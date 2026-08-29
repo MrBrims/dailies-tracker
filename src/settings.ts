@@ -8,9 +8,9 @@ export interface DailiesTrackerSettings {
 }
 
 export const DEFAULT_SETTINGS: DailiesTrackerSettings = {
-  sourcePath: "Задачи и заметки/Дейлики и задачи/Дейлики.md",
-  tablePath: "Задачи и заметки/Дейлики и задачи/Таблица дейликов.md",
-  archiveFolder: "Задачи и заметки/Дейлики и задачи/Архив дейликов",
+  sourcePath: BUILD_DEFAULT_SOURCE_PATH,
+  tablePath: BUILD_DEFAULT_TABLE_PATH,
+  archiveFolder: BUILD_DEFAULT_ARCHIVE_FOLDER,
 };
 
 export class DailiesTrackerSettingTab extends PluginSettingTab {

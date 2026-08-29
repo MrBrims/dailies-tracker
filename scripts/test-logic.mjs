@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from "fs";
 import { join } from "path";
 import { VAULT_ROOT } from "./vault-config.mjs";
+import { PATHS } from "./paths-config.mjs";
 
 const DAY_LABELS = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
@@ -114,9 +115,9 @@ function assert(condition, message) {
 }
 
 const vaultRoot = VAULT_ROOT;
-const sourcePath = join(vaultRoot, "Задачи и заметки/Дейлики и задачи/Дейлики.md");
-const tablePath = join(vaultRoot, "Задачи и заметки/Дейлики и задачи/Таблица дейликов.md");
-const archiveDir = join(vaultRoot, "Задачи и заметки/Дейлики и задачи/Архив дейликов");
+const sourcePath = join(vaultRoot, PATHS.sourcePath);
+const tablePath = join(vaultRoot, PATHS.tablePath);
+const archiveDir = join(vaultRoot, PATHS.archiveFolder);
 
 const source = readFileSync(sourcePath, "utf8");
 const dailies = parseDailiesList(source);

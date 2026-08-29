@@ -17,7 +17,9 @@ help:
 	@echo   make test      - run parser/sync logic tests
 	@echo ""
 	@echo Vault path is set in scripts/vault-config.mjs
+	@echo Plugin paths are set in scripts/paths-config.mjs
 	@echo Optional override: VAULT_ROOT=/path/to/vault make build
+	@echo Optional override: SOURCE_PATH="Tasks/Dailies.md" TABLE_PATH="Tasks/Table.md" ARCHIVE_FOLDER="Tasks/Archive" make build
 
 install:
 	npm install
