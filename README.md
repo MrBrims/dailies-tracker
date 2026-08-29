@@ -4,7 +4,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6.svg)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-LTS-339933.svg)](https://nodejs.org/)
 [![GitHub](https://img.shields.io/badge/GitHub-MrBrims%2Fdailies--tracker-181717.svg)](https://github.com/MrBrims/dailies-tracker)
-[![Version](https://img.shields.io/badge/Version-1.0.2-green.svg)](#changelog)
+[![Version](https://img.shields.io/badge/Version-1.0.3-green.svg)](#changelog)
 
 Obsidian plugin that keeps a weekly checkbox table in sync with a plain daily task list: edits to the source list update table rows (without touching existing checkmarks), completed weeks are archived on startup, and table cells are clickable in Live Preview. Build output is copied straight into the vault plugin folder via Make.
 
@@ -173,8 +173,14 @@ Build artifacts (`main.js`, `main.js.map`) and the installed plugin copy under `
 
 ## Changelog
 
+### 1.0.3
+
+- **NEW**: Sync plugin version from README Changelog to `manifest.json` on `make build`
+- **TECHNICAL**: Sync `package.json` version and README Version badge during build via `scripts/sync-version.mjs`
+
 ### 1.0.2
 
+- **FIX**: Remove deprecated `baseUrl` and update `moduleResolution` to `bundler` for TypeScript 6 compatibility
 - **NEW**: Build-time plugin path defaults via `scripts/paths-config.mjs` and Make/env overrides (`SOURCE_PATH`, `TABLE_PATH`, `ARCHIVE_FOLDER`)
 
 ### 1.0.1

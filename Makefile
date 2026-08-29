@@ -25,6 +25,7 @@ install:
 	npm install
 
 build:
+	node scripts/sync-version.mjs
 	npm run build
 	node scripts/copy-to-vault.mjs
 
