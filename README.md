@@ -175,6 +175,7 @@ Build artifacts (`main.js`, `main.js.map`) and the installed plugin copy under `
 
 ### 1.0.2
 
+- **FIX**: Remove deprecated `baseUrl` and update `moduleResolution` to `bundler` for TypeScript 6 compatibility
 - **NEW**: Build-time plugin path defaults via `scripts/paths-config.mjs` and Make/env overrides (`SOURCE_PATH`, `TABLE_PATH`, `ARCHIVE_FOLDER`)
 
 ### 1.0.1
