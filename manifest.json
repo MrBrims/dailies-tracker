@@ -1,7 +1,7 @@
 {
   "id": "dailies-tracker",
   "name": "Dailies Tracker",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "minAppVersion": "1.0.0",
   "description": "Sync daily tasks from a source list into a weekly checkbox table.",
   "author": "Egor Alexseev",
