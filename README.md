@@ -4,7 +4,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6.svg)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-LTS-339933.svg)](https://nodejs.org/)
 [![GitHub](https://img.shields.io/badge/GitHub-MrBrims%2Fdailies--tracker-181717.svg)](https://github.com/MrBrims/dailies-tracker)
-[![Version](https://img.shields.io/badge/Version-1.0.3-green.svg)](#changelog)
+[![Version](https://img.shields.io/badge/Version-1.0.5-green.svg)](#changelog)
 
 Obsidian plugin that keeps a weekly checkbox table in sync with a plain daily task list: edits to the source list update table rows (without touching existing checkmarks), completed weeks are archived on startup, and table cells are clickable in Live Preview. Build output is copied straight into the vault plugin folder via Make.
 
@@ -105,6 +105,8 @@ Build-time defaults apply on first install (empty `data.json`), as fallbacks whe
 
 **Checkboxes:** a Live Preview post-processor renders table cells as HTML checkboxes; clicks write back to the file.
 
+**Table view:** the configured table file always opens in Obsidian Reading view (from the command palette, file explorer, or links). When you open another note in the same tab, the editor mode you had before the table is restored; source list and archive notes are unaffected.
+
 ## Plugin settings
 
 Configure in Obsidian: Settings → Dailies Tracker. Paths can be changed at any time without rebuilding.
@@ -121,7 +123,7 @@ Configure in Obsidian: Settings → Dailies Tracker. Paths can be changed at any
 | --- | --- |
 | Dailies: Sync from source | Force sync table from source list |
 | Dailies: Rotate week now | Archive current week and reset table |
-| Dailies: Open table | Open the weekly table note |
+| Dailies: Open table | Open the weekly table note in Reading view |
 
 ## Commands
 
@@ -156,7 +158,8 @@ dailies-tracker/
 │   ├── week.ts              # ISO week helpers
 │   ├── writer.ts            # debounced vault writes, loop guard
 │   ├── toggle.ts            # checkbox toggle in table file
-│   └── table-checkbox.ts    # Live Preview checkbox post-processor
+│   ├── table-checkbox.ts    # Live Preview checkbox post-processor
+│   └── table-view.ts        # Reading view for table file only
 ├── scripts/
 │   ├── vault-config.mjs     # default VAULT_ROOT
 │   ├── paths-config.mjs     # default SOURCE_PATH, TABLE_PATH, ARCHIVE_FOLDER
@@ -172,6 +175,14 @@ dailies-tracker/
 Build artifacts (`main.js`, `main.js.map`) and the installed plugin copy under `.obsidian/plugins/dailies-tracker/` in the vault live outside this tree.
 
 ## Changelog
+
+### 1.0.5
+
+- **FIX**: Restore the previous editor mode on a tab after leaving the weekly table (Reading view no longer sticks to the next file in the same tab)
+
+### 1.0.4
+
+- **NEW**: Weekly table file (`tablePath`) always opens in Reading view; other vault notes keep their usual editor mode
 
 ### 1.0.3
 
