@@ -7,6 +7,7 @@ import {
 } from "./settings";
 import { syncTableFromSource } from "./sync";
 import { registerTableCheckboxProcessor } from "./table-checkbox";
+import { openTableFileInReadingView, registerTableReadingView } from "./table-view";
 import { VaultWriter } from "./writer";
 
 export default class DailiesTrackerPlugin extends Plugin {
@@ -18,6 +19,7 @@ export default class DailiesTrackerPlugin extends Plugin {
     this.addSettingTab(new DailiesTrackerSettingTab(this.app, this));
 
     registerTableCheckboxProcessor(this, this.app, this.settings, this.writer);
+    registerTableReadingView(this, () => this.settings.tablePath);
 
     this.registerEvent(
       this.app.vault.on("modify", (file: TAbstractFile) => {
@@ -80,15 +82,17 @@ export default class DailiesTrackerPlugin extends Plugin {
   }
 
   private async openTable(): Promise<void> {
-    const file = this.app.vault.getAbstractFileByPath(this.settings.tablePath);
+    const tablePath = this.settings.tablePath;
+    const leaf = this.app.workspace.getLeaf();
+    const file = this.app.vault.getAbstractFileByPath(tablePath);
     if (file instanceof TFile) {
-      await this.app.workspace.getLeaf().openFile(file);
+      await openTableFileInReadingView(leaf, file, tablePath);
       return;
     }
     await syncTableFromSource(this.app, this.settings, this.writer);
-    const created = this.app.vault.getAbstractFileByPath(this.settings.tablePath);
+    const created = this.app.vault.getAbstractFileByPath(tablePath);
     if (created instanceof TFile) {
-      await this.app.workspace.getLeaf().openFile(created);
+      await openTableFileInReadingView(leaf, created, tablePath);
     }
   }
 }
